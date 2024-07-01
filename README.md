@@ -70,12 +70,16 @@ exp_prw
 2. Following the link in the above table, download our pretrained model to anywhere you like, e.g., `$ROOT/exp_cuhk`
 3. Run an inference demo by specifing the paths of checkpoint and corresponding configuration file.  You can checkout the result in `demo_imgs` directory.
 
+CUHK-SYSU：
 ```
-CUDA_VISIBLE_DEVICES=0 python demo.py --cfg exp_cuhk/config.yaml --ckpt exp_cuhk/epoch_12-95.24-95.9.pth    #CUHK
-CUDA_VISIBLE_DEVICES=0 python demo.py --cfg exp_prw/config.yaml --ckpt exp_prw/epoch_11-52.39-88.19.pth     #PRW
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/cuhk_sysu.yaml --ckpt ./logs/cuhk-sysu/xxx.pth
 ```
-
-![fig1.png](./doc/fig1.png)
+PRW：
+```
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/prw.yaml --ckpt ./logs/prw/xxx.pth
+```
+Please see the Demo photo:
+<img src="./doc/query.jpg" />
 
 ## Training
 
@@ -108,6 +112,7 @@ python train.py --cfg configs/cuhk_sysu.yaml --resume --ckpt /path/to/your/check
 ## Test
 
 Suppose the output directory is `$ROOT/exp_cuhk`. Test the trained model:
+
 For CUHK-SYSU：
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/xxx.pth
@@ -129,18 +134,7 @@ For PRW：
 CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/xxx.pth EVAL_USE_CBGM True
 ```
 
-## Demo
 
-CUHK-SYSU：
-```
-CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/cuhk_sysu.yaml --ckpt ./logs/cuhk-sysu/xxx.pth
-```
-PRW：
-```
-CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/prw.yaml --ckpt ./logs/prw/xxx.pth
-```
-Please see the Demo photo:
-<img src="./doc/query.jpg" />
 
 ## Comparison with SOTA:
 <img src="./doc/4.jpg" />
