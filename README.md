@@ -17,7 +17,7 @@ This repository hosts the source code of our paper: [ASTD](https://github.com/zq
 
 
 major challenges:
-<img src="./doc/1.jpg" width="300" height="100"/>
+<img src="./doc/1.jpg" width="800" height="700"/>
 
 
 The network structure:
