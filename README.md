@@ -141,86 +141,27 @@ CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt e
 CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_13-53.58-88.14.pth EVAL_USE_GT True       #use GT 55.0-89.5
 ```
 
-## Performance on the cross-camera gallery:
-(AMPN only on PRW dataset) in eval_func.py, set to False,
-```
-def eval_search_prw(
-    gallery_dataset,
-    query_dataset,
-    gallery_dets,
-    gallery_feats,
-    query_box_feats,
-    query_dets,
-    query_feats,
-    k1=30,
-    k2=4,
-    det_thresh=0.5,
-    cbgm=False,
-    ignore_cam_id=True,   #You can set it to False to represent "multi-view gallery",
-):
-```
-then run:
-```
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_11-52.39-88.19.pth   ## 49.31-74.62
-```
-Remember that when you test other code, you still have to set it to true！！
 
-
-
+## Comparison with SOTA:
+<img src="./doc/4.jpg" />
 
 ## Evaluation of different gallery size:
-AMPN only on CUHK-SYSU dataset, in eval_func.py set gallery_size=100, or 50,100,500,1000,2000,4000.
-```
-def eval_search_cuhk(
-    gallery_dataset,
-    query_dataset,
-    gallery_dets,
-    gallery_feats,
-    query_box_feats,
-    query_dets,
-    query_feats,
-    k1=10,
-    k2=3,
-    det_thresh=0.5,
-    cbgm=False,
-    gallery_size=100,
-):
-```
-then run:
-```
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_12-95.24-95.9.pth   ##you can get :[95.76, 95.24, 92.42, 90.43, 88.36, 85.90]
-```
+
 <img src="./doc/gallery-size.jpg" />
 Remember that when you test other code, you still need to set it to 100！！
 
-## Performance on the Occluded and Low-Resolution gallery:
-only on CUHK-SYSU dataset, In data/CUHK-SYSU/annotation/test/train_test/  first of all, the original TestG100.mat was renamed to 0TestG100.Mat. Upload [Occluded.mat](https://drive.google.com/file/d/1Vhg3atKdRJM0s-6e34WYdswc5748s8y6/view?usp=sharing) and [Low-Resolution.mat](https://drive.google.com/file/d/1bA3bgplRHc790KdBhXpvLueXr8xCnyxC/view?usp=sharing) to ./data/CUHK-SYSU/annotation/test/train_test/
+## Visualization of ASA:
+<img src="./doc/5.jpg" />
 
-In eval_func.py set gallery_size=100, don't change.
-
-To comment out:
-```
-assert (
-            query_roi - qboxes[0][:4]
-         ).sum() <= 0.001, "query_roi must be the first one in pboxes"
-```
-then Change the Occluded.mat name to TestG100.mat, run:
-```
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_12-95.24-95.9.pth   # 89.09-89.69
-```
-then Change the Low-Resolution.mat name to TestG100.mat, run:
-```
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_12-95.24-95.9.pth   # 85.79-86.24
-```
 ## Qualitative Results:
-<img src="./doc/Qualitative-Results.jpg" />
+<img src="./doc/6.jpg" />
 
 
 ## Acknowledgment
 Thanks to the authors of the following repos for their code, which was integral in this project:
+- [COAT](https://github.com/Kitware/COAT)
 - [SeqNet](https://github.com/serend1p1ty/SeqNet)
 - [NAE](https://github.com/dichen-cd/NAE4PS)
-- [COAT](https://github.com/Kitware/COAT)
 - [GFN](https://github.com/LukeJaffe/GFN)
 - [PSTR](https://github.com/JialeCao001/PSTR)
 - [GLCNet](https://github.com/ZhengPeng7/GLCNet)
@@ -234,10 +175,10 @@ Pull request is welcomed! Before submitting a PR, **DO NOT** forget to run `./de
 ## Citation
 If you find this code useful for your research, please cite our paper
 ```
-@inproceedings{zhang2023AMPN,
-  title={Attentive Multi-granularity Perception Network for Person Search},
+@inproceedings{zqx2024,
+  title={xxxx},
   author={Zhang, Qixian and Miao, Duoqian},
-  booktitle={IEEE Transactions on xxxxxx},
+  booktitle={xxxxxx},
   volume={xx},
   number={x},
   pages={xxx--xxx},
