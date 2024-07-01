@@ -17,10 +17,10 @@ This repository hosts the source code of our paper: [ASTD](https://github.com/zq
 
 
 major challenges:
-<img src="./doc/1.jpg" />
+<img src="./doc/1.jpg" width="300" height="100"/>
 
 
-The network structure is simple and suitable as baseline:
+The network structure:
 
 ![SeqNet](doc/2.jpg)
 
