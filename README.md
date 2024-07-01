@@ -29,13 +29,6 @@ The network structure:
 </div>
 
 
-
-
-
-
-
-
-
 ****
 ## :fire: NEWS :fire:
 - [07/2024] **📣We released the code.**
@@ -79,8 +72,10 @@ PRW：
 CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/prw.yaml --ckpt ./logs/prw/xxx.pth
 ```
 Please see the Demo photo:
-<img src="./doc/query.jpg" />
 
+<div align="center">
+<img src="./doc/query.jpg" width="800" height="650"/>
+</div>
 ## Training
 
 Pick one configuration file you like in `$ROOT/configs`, and run with it.
@@ -145,7 +140,10 @@ CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./
 Remember that when you test other code, you still need to set it to 100！！
 
 ## Visualization of ASA:
+<div align="center">
 <img src="./doc/5.jpg" width="700" height="600"/>
+</div>
+
 
 ## Qualitative Results:
 <img src="./doc/6.jpg" />
