@@ -1,0 +1,113 @@
+https://github.com/Kitware/COAT
+代码的地址：：
+
+可以用SAT也可以用coat库  GLCNet也可以
+发现 学习率0.003 最好  batchsize 大于等于3 更好！
+
+
+conda env create -f satnet.yml
+conda activate SAT
+
+pip install timm==0.5.4
+pip install einops
+
+conda activate coat  GLCNet
+也可以用的
+
+训练：、
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/cuhk-sysu
+这个会输出到prw这样的文件下
+
+
+python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003
+要是这个就会输出到prw_coat文件里面
+
+
+
+测试：
+python train.py --cfg ./configs/cuhk-sysu/config.yaml --eval --ckpt ./logs/cuhk-sysu/cuhk_COAT.pth
+
+
+
+
+cbgm：
+python train.py --cfg ./configs/cuhk-sysu/config.yaml --eval --ckpt ./logs/cuhk-sysu/cuhk_COAT.pth EVAL_USE_CBGM True
+评估不同大小时候的性能：
+python train.py --cfg ./configs/cuhk-sysu/config.yaml --eval --ckpt ./logs/cuhk-sysu/cuhk_COAT.pth EVAL_GALLER Y_SIZE 500
+
+
+
+
+训练prw数据集
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 14 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw
+修改为20轮次
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw_coat
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw_coat
+
+
+
+--resume --ckpt /home/zqx_tesla/home/zqx_tesla/PersonReID/PersonReID2/SAT-main/logs/cuhk-sysu/epoch_5.pth
+
+断点恢复
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml --resume --ckpt /home/zqx_tesla/home/zqx_tesla/PersonReID/PersonReID2/COAT-main/logs/prw/epoch_13.pth
+
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml --resume --ckpt /home/zqx_tesla/home/zqx_tesla/PersonReID/PersonReID2/COAT-main/logs/prw/epoch_10.pth
+断点恢复时候需要 把resnet 以及coat文件对应到与断点训练pth的文件对应上。
+
+直接在default文件里面设置 CBGM的参数为True就可以了
+使用作者的文件：
+python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw_coat/prw_COAT.pth EVAL_USE_CBGM True
+使用我自己训练的结果：
+
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/epoch_12-54.32-86.34.pth EVAL_USE_CBGM True
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/epoch_16-53.49-86.24.pth EVAL_USE_CBGM True
+
+
+训练cuhk：
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/cuhk-sysu
+
+训练PRW
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw
+PRW可以用batch为4！！！ 但 map精度上不如为3时候！
+
+
+
+cbgm：
+cuhk：
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk_coat/epoch_13-94.15-94.41.pth EVAL_USE_CBGM True
+prw：
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/epoch_12-53.68-86.0.pth EVAL_USE_CBGM True
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/epoch_14-53.78-85.61.pth EVAL_USE_CBGM True
+
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/epoch_14-53.78-85.61-54.41-88.43.pth EVAL_USE_CBGM True
+
+Computational complexity:       337.64 GMac
+Number of parameters:           34.31 M
+
+
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/cuhk-sysu
+
+cuhk：验证原始的权重文件合适不：：
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/cuhk_sysu.pth
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/cuhk_sysu.pth EVAL_USE_CBGM True
+
+
+报错：RuntimeError: Attempting to deserialize object on CUDA device 2 but torch.cuda.device_count() is 1
+原因：在使用Pytorch加载模型时报错。加载的模型是用两个GPU训练的，而加载模型的电脑只有一个GPU，所以会出错。
+解决：model = torch.load(model_path)
+改为：model = torch.load(model_path, map_location='cuda:0')
+-----------------------------------
+
+prw验证 原始作者的权重是不是准确：
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/prw-54.42-87.55-54.96-88.87.pth
+CUDA_VISIBLE_DEVICES=1 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/prw-54.42-87.55-54.96-88.87.pth EVAL_USE_CBGM True
+
+#前向demo  一般demo里面都是放的 CUHK的照片
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/cuhk_sysu.yaml --ckpt ./logs/cuhk-sysu/cuhk_sysu-94.34-94.72-95.26-95.90.pth
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/prw.yaml --ckpt ./logs/prw/prw-54.42-87.55-54.96-88.87.pth
+
+
+
+#计算一下 prw里面 直接训练时候就加上CBGM的效果 去选择最好的结果。
