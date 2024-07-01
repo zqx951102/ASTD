@@ -145,7 +145,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./
 Remember that when you test other code, you still need to set it to 100！！
 
 ## Visualization of ASA:
-<img src="./doc/5.jpg" />
+<img src="./doc/5.jpg" width="700" height="600"/>
 
 ## Qualitative Results:
 <img src="./doc/6.jpg" />
