@@ -18,7 +18,7 @@ This repository hosts the source code of our paper: [ASTD](https://github.com/zq
 
 major challenges:
 <div align="center">
-<img src="./doc/1.jpg" width="800" height="700"/>
+<img src="./doc/1.jpg" width="800" height="600"/>
 </div>
 
 
