@@ -89,11 +89,14 @@ python train.py --cfg configs/cuhk_sysu.yaml
 
 ```
 CUHK:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/cuhk-sysu
+
 if out of memory, run this：
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 2 SOLVER.BASE_LR 0.0012
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/cuhk_sysu.yaml INPUT.BATCH_SIZE_TRAIN 2 SOLVER.BASE_LR 0.0012 SOLVER.MAX_EPOCHS 20 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/cuhk-sysu
 PRW:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg configs/prw.yaml INPUT.BATCH_SIZE_TRAIN 3 SOLVER.BASE_LR 0.003 SOLVER.MAX_EPOCHS 14 SOLVER.LR_DECAY_MILESTONES [11] MODEL.LOSS.USE_SOFTMAX True SOLVER.LW_RCNN_SOFTMAX_2ND 0.1 SOLVER.LW_RCNN_SOFTMAX_3RD 0.1 OUTPUT_DIR ./logs/prw 
+
+
 ```
 
 **Tip**: If the training process stops unexpectedly, you can resume from the specified checkpoint.
@@ -105,42 +108,39 @@ python train.py --cfg configs/cuhk_sysu.yaml --resume --ckpt /path/to/your/check
 ## Test
 
 Suppose the output directory is `$ROOT/exp_cuhk`. Test the trained model:
-
+For CUHK-SYSU：
 ```
-python train.py --cfg $ROOT/exp_cuhk/config.yaml --eval --ckpt $ROOT/exp_cuhk/epoch_19.pth
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/xxx.pth
 ```
 
 Test with Context Bipartite Graph Matching algorithm:
 
 ```
-python train.py --cfg $ROOT/exp_cuhk/config.yaml --eval --ckpt $ROOT/exp_cuhk/epoch_19.pth EVAL_USE_CBGM True
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/xxx.pth EVAL_USE_CBGM True
 ```
 
 Test the upper bound of the person search performance by using GT boxes:
 
 ```
-python train.py --cfg $ROOT/exp_cuhk/config.yaml --eval --ckpt $ROOT/exp_cuhk/epoch_19.pth EVAL_USE_GT True
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/cuhk_sysu.yaml --eval --ckpt ./logs/cuhk-sysu/xxx.pth EVAL_USE_GT True
 ```
+For PRW：
 ```
-Computational complexity:       404.27 GMac
-Number of parameters:           50.88 M
-AMPN  CUHK:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_12-95.24-95.9.pth
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_12-95.24-95.9.pth EVAL_USE_GT True      #use GT 95.9-96.3
-AMPN  PRW:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_11-52.39-88.19.pth
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_11-52.39-88.19.pth EVAL_USE_GT True       #use GT 53.9-90.0
-
-Computational complexity:       610.18 GMac
-Number of parameters:           54.99 M
-AMPN+  CUHK:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_20-95.78-96.07.pth
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_cuhk/config.yaml --eval --ckpt exp_cuhk/epoch_20-95.78-96.07.pth EVAL_USE_GT True     #use GT 96.3-96.6
-AMPN+  PRW:
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_13-53.58-88.14.pth
-CUDA_VISIBLE_DEVICES=0 python train.py --cfg exp_prw/config.yaml --eval --ckpt exp_prw/epoch_13-53.58-88.14.pth EVAL_USE_GT True       #use GT 55.0-89.5
+CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./logs/prw/xxx.pth EVAL_USE_CBGM True
 ```
 
+## Demo
+
+CUHK-SYSU：
+```
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/cuhk_sysu.yaml --ckpt ./logs/cuhk-sysu/xxx.pth
+```
+PRW：
+```
+CUDA_VISIBLE_DEVICES=0 python demo.py --cfg ./configs/prw.yaml --ckpt ./logs/prw/xxx.pth
+```
+Please see the Demo photo:
+<img src="./doc/query.jpg" />
 
 ## Comparison with SOTA:
 <img src="./doc/4.jpg" />
