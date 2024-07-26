@@ -167,13 +167,15 @@ Pull request is welcomed! Before submitting a PR, **DO NOT** forget to run `./de
 ## Citation
 If you find this code useful for your research, please cite our paper
 ```
-@inproceedings{zqx2024,
-  title={xxxx},
-  author={Zhang, Qixian and Miao, Duoqian},
-  booktitle={xxxxxx},
-  volume={xx},
-  number={x},
-  pages={xxx--xxx},
+@article{zhang2024attentive,
+  title={Attentive multi-granularity perception network for person search},
+  author={Zhang, Qixian and Wu, Jun and Miao, Duoqian and Zhao, Cairong and Zhang, Qi},
+  journal={Information Sciences},
+  volume={681},
+  pages={121191},
+  year={2024},
+  publisher={Elsevier}
+}
 ```
 ```
 @inproceedings{li2021sequential,
