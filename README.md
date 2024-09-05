@@ -142,7 +142,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py --cfg ./configs/prw.yaml --eval --ckpt ./
 
 ## Evaluation of different gallery size:
 
-<img src="./doc/gallery-size.jpg" />
+<img src="./doc/gallery-size.pdf" />
 Remember that when you test other code, you still need to set it to 100！！
 
 ## Visualization of ASA:
