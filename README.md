@@ -31,8 +31,8 @@ The network structure:
 
 ****
 ## :fire: NEWS :fire:
-- [08/2024] **📣Congratulations, our paper has been accepted by Knowledge-Based Systems!.**
-- 
+- [09/2024] **📣Congratulations, our paper has been accepted by Knowledge-Based Systems!.**
+ 
 - [08/2024] **📣We received comments requiring minor revisions from the Journal of Knowledge-Based Systems.**
 
 - [07/2024] **📣We submitted our paper to the Journal of Knowledge-Based Systems!**
