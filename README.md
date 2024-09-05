@@ -152,7 +152,7 @@ Remember that when you test other code, you still need to set it to 100！！
 
 
 ## Qualitative Results:
-<img src="./doc/6.jpg" />
+<img src="./doc/6.pdf" />
 
 
 ## Acknowledgment
