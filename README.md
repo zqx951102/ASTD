@@ -173,6 +173,16 @@ Pull request is welcomed! Before submitting a PR, **DO NOT** forget to run `./de
 ## Citation
 If you find this code useful for your research, please cite our paper
 ```
+@article{zhang2024learning,
+  title={Learning adaptive shift and task decoupling for discriminative one-step person search},
+  author={Zhang, Qixian and Miao, Duoqian and Zhang, Qi and Wang, Changwei and Li, Yanping and Zhang, Hongyun and Zhao, Cairong},
+  journal={Knowledge-Based Systems},
+  pages={112483},
+  year={2024},
+  publisher={Elsevier}
+}
+```
+```
 @article{zhang2024attentive,
   title={Attentive multi-granularity perception network for person search},
   author={Zhang, Qixian and Wu, Jun and Miao, Duoqian and Zhao, Cairong and Zhang, Qi},
