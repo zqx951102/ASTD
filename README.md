@@ -12,7 +12,7 @@
 <img src="doc/0.jpg" width="300" height="100" alt="图片名称"/>
 </div>
 
-This repository hosts the source code of our paper: [ASTD](https://github.com/zqx951102/ASTD). 
+This repository hosts the source code of our paper: [Learning adaptive shift and task decoupling for discriminative one-step person search]([https://github.com/zqx951102/ASTD](https://doi.org/10.1016/j.knosys.2024.112483)). 
 
 
 
