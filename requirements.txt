@@ -1,0 +1,16 @@
+einops==0.8.0
+matplotlib==3.7.3
+mmcv_full==1.7.2
+numpy==1.23.4
+opencv_python==4.9.0.80
+Pillow==8.2.0
+Pillow==10.4.0
+ptflops==0.7
+scikit_learn==0.24.1
+scipy==1.6.2
+tabulate==0.8.9
+timm==0.5.4
+torch==1.7.1
+torchvision==0.8.2
+tqdm==4.65.2
+yacs==0.1.8
