@@ -69,8 +69,8 @@ exp_prw
 
 Performance profile:
 
-| Dataset   | Name   | ASTD                                                        |
-| --------- | ---- | ----- | ------------------------------------------------------------ |
+| Dataset   | Name          | ASTD                                                        |
+| --------- | ------------- | ------------------------------------------------------------ |
 | CUHK-SYSU | epoch_12.pth  | [model](https://drive.google.com/file/d/16MQbaucjzKeXuadtVqTsZ0j0nQeG-q7M/view?usp=drive_link)|
 | PRW       | epoch_15.pth  | [model](https://drive.google.com/file/d/1bXAGV7XGDuDatqx1VM6uJ28hWG-AOuhJ/view?usp=drive_link) |
 
