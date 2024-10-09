@@ -66,6 +66,15 @@ exp_prw
 ```
 
 2. Following the link in the above table, download our pretrained model to anywhere you like, e.g., `$ROOT/exp_cuhk`
+
+Performance profile:
+
+| Dataset   | Name   | ASTD                                                        |
+| --------- | ---- | ----- | ------------------------------------------------------------ |
+| CUHK-SYSU | epoch_12.pth  | [model](https://drive.google.com/file/d/16MQbaucjzKeXuadtVqTsZ0j0nQeG-q7M/view?usp=drive_link)|
+| PRW       | epoch_15.pth  | [model](https://drive.google.com/file/d/1bXAGV7XGDuDatqx1VM6uJ28hWG-AOuhJ/view?usp=drive_link) |
+
+
 3. Run an inference demo by specifing the paths of checkpoint and corresponding configuration file.  You can checkout the result in `demo_imgs` directory.
 
 CUHK-SYSU：
