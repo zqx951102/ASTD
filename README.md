@@ -34,7 +34,7 @@ The network structure:
  
 - [08/2024] **📣We received comments requiring minor revisions from the Journal of Knowledge-Based Systems.**
 
-- [07/2024] **📣We submitted our paper to the Journal of Knowledge-Based Systems!**
+- [07/2024] **📣We submitted our paper to Knowledge-Based Systems!**
   
 - [07/2024] **📣We released the code.**
 
