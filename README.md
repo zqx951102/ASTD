@@ -192,6 +192,17 @@ If you find this code useful for your research, please cite our paper
 }
 ```
 ```
+@article{zhang2025dynamic,
+  title={Dynamic frequency selection and spatial interaction fusion for robust person search},
+  author={Zhang, Qixian and Miao, Duoqian and Zhang, Qi and Zhao, Cairong and Zhang, Hongyun and Sun, Ye and Wang, Ruizhi},
+  journal={Information Fusion},
+  volume={124},
+  pages={103314},
+  year={2025},
+  publisher={Elsevier}
+}
+```
+```
 @article{zhang2024attentive,
   title={Attentive multi-granularity perception network for person search},
   author={Zhang, Qixian and Wu, Jun and Miao, Duoqian and Zhao, Cairong and Zhang, Qi},
